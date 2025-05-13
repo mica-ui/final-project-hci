@@ -7,3 +7,4 @@
 ![photo printing](https://github.com/user-attachments/assets/e0cbc060-3fe5-47a7-b2b3-98ca9d1967f5)
 ![document printing](https://github.com/user-attachments/assets/22c0da9d-b91d-4838-9250-a460c97751b7)
 ![laminate](https://github.com/user-attachments/assets/eda9439b-7f31-4e86-85a0-64150c1af82d)
+![logo](https://github.com/user-attachments/assets/e83c30f7-92ce-48a5-ab4c-045965a8ca01)
