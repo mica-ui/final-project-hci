@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Detail | Inkspire</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #111;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      margin-left: 2rem;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 3px;
+    }
+
+    nav a.active {
+      border-bottom: 2px solid #3498db;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      background-color: #ddd;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 20px;
+      transition: 0.4s;
+    }
+
+    .slider:before {
+      content: "";
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    main {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .service-block {
+      display: flex;
+      align-items: flex-start;
+      padding: 1.5rem;
+      gap: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .service-block img {
+      width: 200px;
+      border-radius: 6px;
+    }
+
+    .service-block .content {
+      flex: 1;
+    }
+
+    .instax {
+      background-color: #b3dede;
+    }
+
+    .xerox {
+      background-color: #fff;
+    }
+
+    .xerox .content {
+      border: 2px solid #b19cd9;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-description {
+      font-size: 15px;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .service-description.show {
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode header {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode nav a {
+      color: #ccc;
+    }
+
+    body.dark-mode .btn {
+      background-color: #444;
+      color: white;
+    }
+
+    body.dark-mode .btn.primary {
+      background-color: #2980b9;
+    }
+
+    body.dark-mode .instax {
+      background-color: #2c6b6e;
+    }
+
+    body.dark-mode .xerox {
+      background-color: #2b2b2b;
+    }
+
+    body.dark-mode .xerox .content {
+      border-color: #9d71d1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="logo.png" alt="Logo" class="logo">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="#">Contacts</a>
+        <a href="#">Feedback</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <label class="switch">
+        <input type="checkbox" id="darkToggle">
+        <span class="slider"></span>
+      </label>
+      <span>Dark Mode</span>
+      <a href="signin.html"><button class="btn primary">Sign out</button></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Instax Block -->
+    <div class="service-block instax" data-toggle="description">
+      <img src="img/instax.jpg" alt="Instax">
+      <div class="content">
+        <div class="service-title">📸 Instax Inspo</div>
+        <p class="service-description">
+          Capture your memories instantly with Instax printing. Perfect for scrapbooks, personal collections, and creative projects. Get high-quality instant prints in vibrant colors.
+        </p>
+      </div>
+    </div>
+
+    <!-- Scan/Xerox Block -->
+    <div class="service-block xerox" data-toggle="description">
+      <img src="img/scan.jpg" alt="Scan Xerox">
+      <div class="content">
+        <div class="service-title">🖨️ Scan / Xerox</div>
+        <p class="service-description">
+          Fast and high-resolution scanning and photocopying services. Ideal for documents, ID cards, and educational materials. Get clear and accurate copies in black & white or full color.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Dark mode toggle
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Description toggle for all service blocks
+    document.querySelectorAll('[data-toggle="description"]').forEach(block => {
+      block.addEventListener('click', () => {
+        const desc = block.querySelector('.service-description');
+        desc.classList.toggle('show');
+      });
+    });
+  </script>
+</body>
+</html>

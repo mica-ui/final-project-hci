@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback - INKspire</title>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #000000;
+      --card-bg: #fff;
+      --border-color: #ddd;
+      --highlight: #007bff;
+    }
+
+    body.dark-mode {
+      --bg-color: #444040;
+      --text-color: #000000;
+      --card-bg: #ffffff;
+      --border-color: #fffdfd;
+      --highlight: #4dabf7;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    /* NAVIGATION BAR */
+    .navbar {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left .logo {
+      display: flex;
+      align-items: center;
+      margin-right: 30px;
+    }
+
+    .nav-left .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .nav-links a {
+      margin-right: 25px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: bold;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid var(--highlight);
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sign-out {
+      background-color: var(--highlight);
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .toggle-switch {
+      display: flex;
+      align-items: center;
+      height: 36px; /* Align with button height */
+    }
+
+    .toggle-switch input {
+      display: none;
+    }
+
+    .toggle-switch label {
+      background-color: #524b4bb8;
+      border-radius: 15px;
+      width: 40px;
+      height: 20px;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .toggle-switch label::after {
+      content: "";
+      width: 18px;
+      height: 18px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      transition: 0.3s;
+    }
+
+    .toggle-switch input:checked + label::after {
+      transform: translateX(20px);
+    }
+
+    .toggle-switch input:checked + label {
+      background-color: var(--highlight);
+    }
+
+    /* FEEDBACK SECTION */
+    .feedback-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .emoji-options span {
+      font-size: 50px;
+      margin: 0 20px;
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s;
+      filter: grayscale(100%);
+    }
+
+    .emoji-options span.selected {
+      transform: scale(1.2);
+      filter: grayscale(0%);
+    }
+
+    .stars span {
+      font-size: 35px;
+      color: gray;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .stars span.selected,
+    .stars span.hovered {
+      color: gold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      resize: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--highlight);
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    button:not(:disabled):hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <div class="logo">
+        <img src="C:\Users\ASUS TUF\Downloads\logo.png" alt="logo">
+        
+      </div>
+      <div class="nav-links">
+        <a href="homepage.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="Contacts.html">Contacts</a>
+        <a href="Feedback.html" class="active">Feedback</a>
+        
+      </div>
+    </div>
+    <div class="navbar-right">
+      <!-- Dark Mode Toggle -->
+      <div class="toggle-switch">
+        <input type="checkbox" id="dark-toggle">
+        <label for="dark-toggle"></label>
+          <span class="toggle-label">Dark Mode</span>
+      </div>
+      <a href="homepage.html"><button class="btn primary">Sign out</button></a>
+    </div>
+  </div>
+
+  <!-- FEEDBACK FORM -->
+  <div class="feedback-container">
+    <h2>Feedback</h2>
+
+    <!-- Emoji Selection -->
+    <div class="emoji-options" id="emoji-options">
+    <span data-value="sad">😞</span>
+    <span data-value="neutral">😐</span>
+    <span data-value="happy">😊</span>
+    <span data-value="angry">😡</span> <!-- Added angry emoji -->
+    </div>
+
+    <!-- Star Rating -->
+    <div class="stars" id="star-rating">
+      <span data-value="1">★</span>
+      <span data-value="2">★</span>
+      <span data-value="3">★</span>
+      <span data-value="4">★</span>
+      <span data-value="5">★</span>
+    </div>
+
+    <!-- Optional Feedback -->
+    <textarea id="text-feedback" placeholder="Care to share more? (optional)"></textarea>
+
+    <!-- Submit Button -->
+    <br/>
+    <button id="submit-btn" disabled>Submit</button>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const emojiOptions = document.querySelectorAll("#emoji-options span");
+    const stars = document.querySelectorAll("#star-rating span");
+    const submitBtn = document.getElementById("submit-btn");
+    const toggle = document.getElementById("dark-toggle");
+
+    let selectedEmoji = null;
+    let selectedStars = 0;
+
+    emojiOptions.forEach((emoji) => {
+      emoji.addEventListener("click", () => {
+        emojiOptions.forEach(e => e.classList.remove("selected"));
+        emoji.classList.add("selected");
+        selectedEmoji = emoji.dataset.value;
+        checkFormReady();
+      });
+    });
+
+    stars.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        selectedStars = index + 1;
+        updateStars(selectedStars);
+        checkFormReady();
+      });
+
+      star.addEventListener("mouseover", () => {
+        updateStars(index + 1, true);
+      });
+
+      star.addEventListener("mouseout", () => {
+        updateStars(selectedStars);
+      });
+    });
+
+    function updateStars(rating, isHover = false) {
+      stars.forEach((star, idx) => {
+        star.classList.remove("selected", "hovered");
+        if (idx < rating) {
+          star.classList.add(isHover ? "hovered" : "selected");
+        }
+      });
+    }
+
+    function checkFormReady() {
+      submitBtn.disabled = !(selectedEmoji && selectedStars > 0);
+    }
+
+    submitBtn.addEventListener("click", () => {
+    const feedback = document.getElementById("text-feedback").value;
+    alert(`Thank you for your feedback!\nEmoji: ${selectedEmoji}\nStars: ${selectedStars}\nMessage: ${feedback}`);
+    });
+
+    // DARK MODE TOGGLE LOGIC
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark-mode", toggle.checked);
+      localStorage.setItem("darkMode", toggle.checked ? "on" : "off");
+    });
+
+    // Load dark mode preference on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("darkMode") === "on") {
+        document.body.classList.add("dark-mode");
+        toggle.checked = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
